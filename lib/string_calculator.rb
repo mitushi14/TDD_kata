@@ -2,7 +2,7 @@
 
 class StringCalculator
   def self.add(input)
-    if input.empty?
+    if input.nil? || input.empty?
       0
     else
       input.to_i
