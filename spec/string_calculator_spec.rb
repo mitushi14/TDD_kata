@@ -11,12 +11,16 @@ RSpec.describe StringCalculator do
       end
     end
 
+    context 'when given input is nil' do
+      it 'returns 0' do
+        expect(StringCalculator.add(nil)).to eq(0)
+      end
+    end
+
     context 'when given input is single number' do
       it 'returns the number itself' do
         expect(StringCalculator.add('7')).to eq(7)
       end
     end
-
-
   end
 end
