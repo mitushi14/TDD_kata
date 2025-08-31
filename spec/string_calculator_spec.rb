@@ -23,5 +23,11 @@ RSpec.describe StringCalculator do
         expect(StringCalculator.add('7')).to eq(7)
       end
     end
+
+    context 'when given input is comma seperated numbers' do
+      it 'returns the sum of those numbers' do
+        expect(StringCalculator.add('7,8')).to eq(15)
+      end
+    end
   end
 end
