@@ -19,33 +19,33 @@ RSpec.describe StringCalculator do
 
     context 'when given input is single number' do
       it 'returns the number itself' do
-        expect(StringCalculator.add('7')).to be_a(Integer)
-        expect(StringCalculator.add('7')).to eq(7)
+        expect(StringCalculator.add("7")).to be_a(Integer)
+        expect(StringCalculator.add("7")).to eq(7)
       end
     end
 
     context 'when given input is comma seperated numbers' do
       it 'returns the sum of those numbers' do
-        expect(StringCalculator.add('7,8')).to eq(15)
+        expect(StringCalculator.add("7,8")).to eq(15)
       end
     end
 
     context 'when given input is newline seperated numbers' do
       it 'returns the sum of those numbers' do
-        expect(StringCalculator.add('4\n7')).to eq(11)
-        expect(StringCalculator.add('4\n3\n8')).to eq(15)
+        expect(StringCalculator.add("4\n7")).to eq(11)
+        expect(StringCalculator.add("4\n3\n8")).to eq(15)
       end
     end
 
     context 'when given input is comma and newline seperated numbers' do
       it 'returns the sum of those numbers' do
-        expect(StringCalculator.add('2,8\n10')).to eq(20)
+        expect(StringCalculator.add("2,8\n10")).to eq(20)
       end
     end
 
     context 'when given input contains custom delimiter with beginning of line as separate line' do
       it 'returns the sum of those numbers' do
-        expect(StringCalculator.add('//;\n1;2')).to eq(3)
+        expect(StringCalculator.add("//;\n1;2")).to eq(3)
       end
     end
   end
