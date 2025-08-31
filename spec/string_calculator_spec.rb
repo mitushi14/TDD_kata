@@ -42,5 +42,11 @@ RSpec.describe StringCalculator do
         expect(StringCalculator.add('2,8\n10')).to eq(20)
       end
     end
+
+    context 'when given input contains custom delimiter with beginning of line as separate line' do
+      it 'returns the sum of those numbers' do
+        expect(StringCalculator.add('//;\n1;2')).to eq(3)
+      end
+    end
   end
 end
