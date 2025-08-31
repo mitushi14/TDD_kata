@@ -4,22 +4,28 @@ class StringCalculator
   def self.add(input)
     return 0 if input.nil? || input.empty?
 
+    delimiter, number_string = extract_delimiter(input)
+    numbers = number_string.split(/#{delimiter}/).map(&:to_i)
+
+    negative_numbers = numbers.select(&:negative?)
+    return "Negative numbers not allowed #{negative_numbers.join(', ')}" unless negative_numbers.empty?
+
+    numbers = numbers.reject{ |num| num>1000}
+
+    return numbers[0] if numbers.size == 1
+
+    numbers.sum
+  end
+
+  private
+  def self.extract_delimiter(input)
     delimiter = "\n|,"
     if input.start_with?("//")
-      custom_delimiter = Regexp.escape(input[2])
-      delimiter = "#{delimiter}|#{custom_delimiter}"
-      input = input[4..]
+      delimiter_line, extracted_numbers = input.split("\n", 2)
+      custom_delimiter = Regexp.escape(delimiter_line[2])
+      ["#{delimiter}|#{custom_delimiter}", extracted_numbers]
+    else
+      [delimiter, input]
     end
-      numbers = input.split(/#{delimiter}/).map(&:to_i)
-
-      negative_numbers = numbers.select(&:negative?)
-      return "Negative numbers not allowed #{negative_numbers.join(', ')}" unless negative_numbers.empty?
-
-      number_greater_than_1000 = numbers.select{ |num| num>1000}
-      numbers = numbers - number_greater_than_1000
-
-      return numbers[0] if numbers.size == 1
-
-      numbers.sum
   end
 end
