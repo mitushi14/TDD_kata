@@ -15,8 +15,11 @@ class StringCalculator
       negative_numbers = numbers.select(&:negative?)
       return "Negative numbers not allowed #{negative_numbers.join(', ')}" unless negative_numbers.empty?
 
+      number_greater_than_1000 = numbers.select{ |num| num>1000}
+      numbers = numbers - number_greater_than_1000
+
       return numbers[0] if numbers.size == 1
 
       numbers.sum
-    end
+  end
 end
