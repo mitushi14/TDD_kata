@@ -36,5 +36,11 @@ RSpec.describe StringCalculator do
         expect(StringCalculator.add('4\n3\n8')).to eq(15)
       end
     end
+
+    context 'when given input is comma and newline seperated numbers' do
+      it 'returns the sum of those numbers' do
+        expect(StringCalculator.add('2,8\n10')).to eq(20)
+      end
+    end
   end
 end
