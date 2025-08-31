@@ -12,7 +12,7 @@ class StringCalculator
     end
       numbers = input.split(/#{delimiter}/).map(&:to_i)
 
-      negative_numbers = numbers.select { |num| num.negative? }
+      negative_numbers = numbers.select(&:negative?)
       return "Negative numbers not allowed #{negative_numbers.join(', ')}" unless negative_numbers.empty?
 
       return numbers[0] if numbers.size == 1
