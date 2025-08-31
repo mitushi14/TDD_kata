@@ -19,6 +19,7 @@ RSpec.describe StringCalculator do
 
     context 'when given input is single number' do
       it 'returns the number itself' do
+        expect(StringCalculator.add('7')).to be_a(Integer)
         expect(StringCalculator.add('7')).to eq(7)
       end
     end
