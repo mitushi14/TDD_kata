@@ -11,8 +11,12 @@ class StringCalculator
       input = input[4..]
     end
       numbers = input.split(/#{delimiter}/).map(&:to_i)
+
+      negative_numbers = numbers.select { |num| num.negative? }
+      return "Negative numbers not allowed #{negative_numbers.join(', ')}" unless negative_numbers.empty?
+
       return numbers[0] if numbers.size == 1
 
       numbers.sum
-  end
+    end
 end
