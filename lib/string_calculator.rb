@@ -5,7 +5,7 @@ class StringCalculator
     if input.nil? || input.empty?
       0
     else
-      numbers = input.split(',').map { |num| num.to_i }
+      numbers = input.split(/,|\\n/).map { |num| num.to_i }
       return numbers[0] if numbers.size == 1
 
       numbers.inject(0) { |sum, num| sum + num }
